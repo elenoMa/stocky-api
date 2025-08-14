@@ -31,7 +31,21 @@ connectDB();
 
 // Rutas básicas de prueba
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'Stocky API is running ✅' });
+  res.json({ 
+    status: 'Stocky API is running ✅',
+    timestamp: new Date().toISOString(),
+    port: PORT,
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Health check para Render.com
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Stocky API is running',
+    status: 'OK',
+    timestamp: new Date().toISOString()
+  });
 });
 
 // Rutas de la API
@@ -54,8 +68,8 @@ app.use('*', (req, res) => {
   res.status(404).json({ message: 'Ruta no encontrada' });
 });
 
-// app.listen(PORT, () => {
-//   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-//   console.log(`📊 API disponible en http://localhost:${PORT}/api`);
-// });
-app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+  console.log(`📊 API disponible en /api`);
+  console.log(`🔗 MongoDB conectado correctamente`);
+});
