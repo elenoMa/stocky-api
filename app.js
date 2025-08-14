@@ -54,7 +54,8 @@ app.use('*', (req, res) => {
   res.status(404).json({ message: 'Ruta no encontrada' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-  console.log(`📊 API disponible en http://localhost:${PORT}/api`);
-});
+// app.listen(PORT, () => {
+//   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+//   console.log(`📊 API disponible en http://localhost:${PORT}/api`);
+// });
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));

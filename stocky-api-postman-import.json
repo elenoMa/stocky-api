@@ -1,0 +1,448 @@
+{
+  "info": {
+    "name": "Stocky API",
+    "description": "API completa para gestión de inventario Stocky",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@stocky.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/auth/login",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Usuario Test\",\n  \"email\": \"test@stocky.com\",\n  \"password\": \"test123\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/auth/register",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://stocky-api-924b.onrender.com/api/health",
+          "protocol": "https",
+          "host": ["stocky-api-924b", "onrender", "com"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/products",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Producto Test\",\n  \"description\": \"Descripción del producto de prueba\",\n  \"price\": 99.99,\n  \"stock\": 100,\n  \"category\": \"{{categoryId}}\",\n  \"supplier\": \"{{supplierId}}\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/products",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/products/{{productId}}",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "products", "{{productId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Producto Actualizado\",\n  \"description\": \"Descripción actualizada\",\n  \"price\": 149.99,\n  \"stock\": 75\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/products/{{productId}}",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "products", "{{productId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/products/{{productId}}",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "products", "{{productId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/categories",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "categories"]
+            }
+          }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Categoría Test\",\n  \"description\": \"Descripción de la categoría\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/categories",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "categories"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Suppliers",
+      "item": [
+        {
+          "name": "Get All Suppliers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/suppliers",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "suppliers"]
+            }
+          }
+        },
+        {
+          "name": "Create Supplier",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Proveedor Test\",\n  \"email\": \"proveedor@test.com\",\n  \"phone\": \"+1234567890\",\n  \"address\": \"Dirección del proveedor\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/suppliers",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "suppliers"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Movements",
+      "item": [
+        {
+          "name": "Get All Movements",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/movements",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "movements"]
+            }
+          }
+        },
+        {
+          "name": "Create Movement (Entrada)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"entrada\",\n  \"product\": \"{{productId}}\",\n  \"quantity\": 50,\n  \"description\": \"Entrada de stock inicial\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/movements",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "movements"]
+            }
+          }
+        },
+        {
+          "name": "Create Movement (Salida)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"salida\",\n  \"product\": \"{{productId}}\",\n  \"quantity\": 10,\n  \"description\": \"Venta de productos\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/movements",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "movements"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/users",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Get All Tasks",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/tasks",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "tasks"]
+            }
+          }
+        },
+        {
+          "name": "Create Task",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Tarea Test\",\n  \"description\": \"Descripción de la tarea\",\n  \"status\": \"pendiente\",\n  \"priority\": \"media\"\n}"
+            },
+            "url": {
+              "raw": "https://stocky-api-924b.onrender.com/api/tasks",
+              "protocol": "https",
+              "host": ["stocky-api-924b", "onrender", "com"],
+              "path": ["api", "tasks"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "TU_TOKEN_AQUI",
+      "description": "Token de autenticación obtenido del login"
+    },
+    {
+      "key": "productId",
+      "value": "ID_DEL_PRODUCTO",
+      "description": "ID del producto para pruebas"
+    },
+    {
+      "key": "categoryId",
+      "value": "ID_DE_LA_CATEGORIA",
+      "description": "ID de la categoría para pruebas"
+    },
+    {
+      "key": "supplierId",
+      "value": "ID_DEL_PROVEEDOR",
+      "description": "ID del proveedor para pruebas"
+    }
+  ]
+}
