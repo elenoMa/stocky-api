@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node app.js",
+    "build": "echo 'Build completed'",
     "seed": "node src/scripts/seedData.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

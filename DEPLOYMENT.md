@@ -11,9 +11,20 @@ NODE_ENV=production
 
 ## Configuración del Servicio
 
-- **Build Command**: `npm install`
+- **Build Command**: `npm run build`
 - **Start Command**: `npm start`
 - **Health Check Path**: `/`
+
+## Configuración en Render.com Dashboard
+
+1. **Ve a tu servicio en Render.com**
+2. **En "Settings" → "Build & Deploy":**
+   - **Build Command**: `npm run build`
+   - **Start Command**: `npm start`
+3. **En "Environment Variables":**
+   - `MONGO_URI`: Tu URI de MongoDB Atlas
+   - `NODE_ENV`: `production`
+4. **En "Health Check Path":** `/`
 
 ## Endpoints de Verificación
 
@@ -35,6 +46,17 @@ GET https://tu-app.onrender.com/api/health
 2. **Revisa los logs** en la consola de Render.com
 3. **Asegúrate de que MongoDB esté accesible** desde Render.com
 4. **Verifica que el puerto no esté hardcodeado** en el código
+
+### Problema específico: Build Command incorrecto
+
+**ANTES (INCORRECTO):**
+- Build Command: `npm start` ❌
+- Esto hace que Render.com ejecute la aplicación durante el build
+
+**DESPUÉS (CORRECTO):**
+- Build Command: `npm run build` ✅
+- Start Command: `npm start` ✅
+- Esto separa el proceso de build del start
 
 ### Logs esperados al iniciar:
 
